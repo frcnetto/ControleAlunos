@@ -1,8 +1,11 @@
 package br.com.fabricadeprogramador.persistence.jdbc;
 
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import br.com.fabricadeprogramador.persistence.entity.Usuario;
 
@@ -17,7 +20,6 @@ public class UsuarioDAO {
 			prepared.setString(3, usr.getSenha());
 			prepared.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -31,7 +33,6 @@ public class UsuarioDAO {
 			prepared.setInt(4, usr.getId());
 			prepared.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -42,9 +43,66 @@ public class UsuarioDAO {
 			prepared.setInt(1, usr.getId());
 			prepared.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	public void salvar(Usuario usr){
+		if(usr.getId() != null){
+			alterar(usr);
+		} else{
+			cadastrar(usr);
+		}
+	}
+
+	public Usuario busca(Integer id){
+		Usuario retorno = null;
+		
+		String sql = "SELECT * FROM usuario WHERE id = ?";
+		try (PreparedStatement prepared = conexao.prepareStatement(sql);){
+			prepared.setInt(1, id);
+			ResultSet resultado = prepared.executeQuery();
+			
+			if(resultado.next()){
+				retorno = new Usuario();
+				
+				retorno.setId(resultado.getInt("id"));
+				retorno.setNome(resultado.getString("nome"));
+				retorno.setLogin(resultado.getString("login"));
+				retorno.setSenha(resultado.getString("senha"));
+				
+				return retorno;
+			} else{
+				System.out.println("Usuario inexistente ou não encontrado!");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		
+		return retorno;
+	}
+
+	public List<Usuario> buscaTodos(){
+		java.util.List<Usuario> retorno = new ArrayList<Usuario>();
+		
+		String sql = "SELECT * FROM usuario";
+		try (PreparedStatement prepared = conexao.prepareStatement(sql);){
+			ResultSet resultado = prepared.executeQuery();
+			
+			while(resultado.next()){
+				Usuario usuario = new Usuario();
+				
+				usuario.setId(resultado.getInt("id"));
+				usuario.setNome(resultado.getString("nome"));
+				usuario.setLogin(resultado.getString("login"));
+				usuario.setSenha(resultado.getString("senha"));
+				
+				retorno.add(usuario);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		
+		return retorno;
+	}
 }
