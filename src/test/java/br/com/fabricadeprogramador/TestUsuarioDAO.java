@@ -10,23 +10,26 @@ public class TestUsuarioDAO {
 	public static void main(String[] args) {
 		Usuario usr = new Usuario();
 		
-		usr.setId(1);
-		usr.setNome("Teste");
-		usr.setLogin("Teste");
+		usr.setLogin("frcnetto");
 		usr.setSenha("123456");
 		
-		buscaTodos();
+		altenticar(usr);
 	}
 	
+	private static void altenticar(Usuario usr) {
+		UsuarioDAO usrDAO = new UsuarioDAO();
+		System.out.println(usrDAO.validar(usr));
+	}
+
 	private static void buscaTodos() {
 		UsuarioDAO usrDAO = new UsuarioDAO();
-		System.out.println(usrDAO.buscaTodos().size());
+		System.out.println(usrDAO.buscarTodos().size());
 	}
 
 	private static void buscar(Usuario usr) {
 		UsuarioDAO usrDAO = new UsuarioDAO();
 		
-		JOptionPane.showMessageDialog(null, usrDAO.busca(usr.getId()).getNome());
+		JOptionPane.showMessageDialog(null, usrDAO.buscar(usr.getId()).getNome());
 	}
 
 	public static void cadastrar(Usuario usr){

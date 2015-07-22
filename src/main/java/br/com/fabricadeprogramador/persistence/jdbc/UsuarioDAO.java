@@ -55,7 +55,7 @@ public class UsuarioDAO {
 		}
 	}
 
-	public Usuario busca(Integer id){
+	public Usuario buscar(Integer id){
 		Usuario retorno = null;
 		
 		String sql = "SELECT * FROM usuario WHERE id = ?";
@@ -82,7 +82,7 @@ public class UsuarioDAO {
 		return retorno;
 	}
 
-	public List<Usuario> buscaTodos(){
+	public List<Usuario> buscarTodos(){
 		java.util.List<Usuario> retorno = new ArrayList<Usuario>();
 		
 		String sql = "SELECT * FROM usuario";
@@ -104,5 +104,18 @@ public class UsuarioDAO {
 		}		
 		
 		return retorno;
+	}
+	
+	public boolean validar(Usuario usr){
+		String sql = "SELECT * FROM usuario WHERE login = ? and senha = ?";
+		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
+			prepared.setString(1, usr.getLogin());
+			prepared.setString(2, usr.getSenha());
+			ResultSet resultado = prepared.executeQuery();
+			return resultado.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
