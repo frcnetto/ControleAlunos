@@ -1,0 +1,22 @@
+.demo-card-square.mdl-card {
+    background: #fff;
+ }
+
+.fundo {
+	background: #0080ff;
+}
+
+.div-login {
+	position: absolute;
+	top: 50%; 
+	margin-top: -150px;
+	right: 50%;
+	margin-right: -166px;
+}
+.div-login > input{
+	right: 50%;
+	text-align: left;
+}
+.mdl-textfield__input{
+	background: #fff;
+}
