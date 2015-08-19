@@ -2,9 +2,10 @@ package br.com.fabricadeprogramador;
 
 import javax.swing.JOptionPane;
 
-import br.com.fabricadeprogramador.persistence.entity.Usuario;
-import br.com.fabricadeprogramador.persistence.jdbc.UsuarioDAO;
+import br.estacio.dsw.persistence.entity.Usuario;
+import br.estacio.dsw.persistence.jdbc.UsuarioDAO;
 
+@SuppressWarnings("unused")
 public class TestUsuarioDAO {
 
 	public static void main(String[] args) {

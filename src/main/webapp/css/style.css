@@ -2,8 +2,9 @@
     background: #fff;
  }
 
-.fundo {
-	background: #0080ff;
+.bg {
+	background-color: #0080ff;
+	background-color: #000;
 }
 
 .div-login {
