@@ -1,9 +1,9 @@
-package br.estacio.dsw.persistence.entity;
+package br.estacio.dsw.model;
 
 public class Usuario {
 	private Integer id;
 	private String nome;
-	private String login;
+	private String username;
 	private String senha;
 	
 	public Integer getId() {
@@ -21,10 +21,10 @@ public class Usuario {
 	}
 	
 	public String getLogin() {
-		return login;
+		return username;
 	}
 	public void setLogin(String login) {
-		this.login = login;
+		this.username = login;
 	}
 	
 	public String getSenha() {

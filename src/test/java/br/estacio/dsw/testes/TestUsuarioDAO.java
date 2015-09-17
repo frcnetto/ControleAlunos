@@ -1,9 +1,9 @@
-package br.com.fabricadeprogramador;
+package br.estacio.dsw.testes;
 
 import javax.swing.JOptionPane;
 
-import br.estacio.dsw.persistence.entity.Usuario;
-import br.estacio.dsw.persistence.jdbc.UsuarioDAO;
+import br.estacio.dsw.dao.UsuarioDAO;
+import br.estacio.dsw.model.Usuario;
 
 @SuppressWarnings("unused")
 public class TestUsuarioDAO {

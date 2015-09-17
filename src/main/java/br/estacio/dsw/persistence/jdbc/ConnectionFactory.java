@@ -14,7 +14,7 @@ public class ConnectionFactory {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return DriverManager.getConnection("jdbc:postgresql://localhost:5432/fabricaweb", "postgres", "admin");
+			return DriverManager.getConnection("jdbc:postgresql://localhost:5432/controlealunos", "postgres", "admin");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

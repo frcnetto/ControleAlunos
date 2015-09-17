@@ -1,4 +1,4 @@
-package br.estacio.dsw.persistence.jdbc;
+package br.estacio.dsw.dao;
 
 import java.util.List;
 import java.sql.Connection;
@@ -7,13 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.estacio.dsw.persistence.entity.Usuario;
+import br.estacio.dsw.model.Usuario;
+import br.estacio.dsw.persistence.jdbc.ConnectionFactory;
 
 public class UsuarioDAO {
 	private Connection conexao = ConnectionFactory.getConnection();
 	
 	public void cadastrar(Usuario usr) {
-		String sql = "INSERT INTO usuario(nome, login, senha) values(?, ?, ?)";
+		String sql = "INSERT INTO usuario(nome, username, senha) values(?, ?, ?)";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setString(1, usr.getNome());
 			prepared.setString(2, usr.getLogin());
@@ -25,7 +26,7 @@ public class UsuarioDAO {
 	}
 
 	public void alterar(Usuario usr) {
-		String sql = "UPDATE usuario set nome = ?, login = ?, senha = ? where id = ?";
+		String sql = "UPDATE usuario set nome = ?, username = ?, senha = ? where id = ?";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setString(1, usr.getNome());
 			prepared.setString(2, usr.getLogin());
@@ -68,7 +69,7 @@ public class UsuarioDAO {
 				
 				retorno.setId(resultado.getInt("id"));
 				retorno.setNome(resultado.getString("nome"));
-				retorno.setLogin(resultado.getString("login"));
+				retorno.setLogin(resultado.getString("username"));
 				retorno.setSenha(resultado.getString("senha"));
 				
 				return retorno;
@@ -94,7 +95,7 @@ public class UsuarioDAO {
 				
 				usuario.setId(resultado.getInt("id"));
 				usuario.setNome(resultado.getString("nome"));
-				usuario.setLogin(resultado.getString("login"));
+				usuario.setLogin(resultado.getString("username"));
 				usuario.setSenha(resultado.getString("senha"));
 				
 				retorno.add(usuario);
@@ -107,7 +108,7 @@ public class UsuarioDAO {
 	}
 	
 	public boolean validar(Usuario usr){
-		String sql = "SELECT * FROM usuario WHERE login = ? and senha = ?";
+		String sql = "SELECT * FROM usuario WHERE username = ? and senha = ?";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setString(1, usr.getLogin());
 			prepared.setString(2, usr.getSenha());

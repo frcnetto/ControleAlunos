@@ -1,4 +1,4 @@
-package br.com.fabricadeprogramador;
+package br.estacio.dsw.testes;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
