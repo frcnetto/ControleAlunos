@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Media {
 	private int			 			 id;
-	private ArrayList<ProvaAbstrata> provas;
+	private ArrayList<Prova> provas;
 	private String					 formula;
 	
 	public Media(){
-		provas  = new ArrayList<ProvaAbstrata>();
+		provas  = new ArrayList<Prova>();
 		formula = "";
 	}
 	
@@ -20,11 +20,11 @@ public class Media {
 		this.id = id;
 	}
 	
-	public ArrayList<ProvaAbstrata> getProvas() {
+	public ArrayList<Prova> getProvas() {
 		return provas;
 	}
 	
-	public void setProvas(ArrayList<ProvaAbstrata> provas) {
+	public void setProvas(ArrayList<Prova> provas) {
 		this.provas = provas;
 	}
 	

@@ -1,0 +1,24 @@
+<%@page import="br.estacio.dsw.dao.AlunoDao"%>
+<%@page import="br.estacio.dsw.model.Aluno"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<% if(request.getParameter("atualizar").equals("atualizarAluno")){
+		Aluno novo = new Aluno();
+		novo.setMatricula(Integer.parseInt(request.getParameter("matricula")));
+		novo.setNome(request.getParameter("nome"));
+		AlunoDao dao = new AlunoDao();
+		if(dao.updAluno(novo)){
+			response.sendRedirect("bem-vindo.jsp");
+		} else{
+			response.sendRedirect("erro.html");
+		}
+	} %>
+</body>
+</html>
