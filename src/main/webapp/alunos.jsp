@@ -20,7 +20,6 @@
 	<tr>
 		<th>Matrícula</th>
 		<th>Nome</th>
-		<th>Média</th>
 		<th>Nota</th>
 		<th>Ação</th>
 	</tr>
@@ -28,7 +27,6 @@
 		<tr>
 			<td name="matricula"><%= aluno.getMatricula()%></td> 
 			<td name="nome"><%= aluno.getNome()%></td>
-			<td name="media"><%= aluno.getMedia()%></td>
 			<td name="nota"><%= aluno.getNota()%></td>
 			<td><a href="atualizarAluno.jsp?matricula=<%= aluno.getMatricula()%>&nome=<%= aluno.getNome()%>">Editar</a></td>
 			<td><a href="excluirAction.jsp?matricula=<%= aluno.getMatricula()%>&excluir=aluno">Excluir</a></td>

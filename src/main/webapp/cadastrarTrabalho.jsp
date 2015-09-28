@@ -9,16 +9,18 @@
 <body>
 	<form action="cadastrarAction.jsp" method="post">
 		<table>
-			<th>
-				<td>Nome</td>
-			</th>
 			<tr>
-				<td><input type="text" name="nome"></input></td>
-				<td><input type="hidden" name="cadastrar" value="cadastrarAluno"></imput></td>
+				<td>Nota</td>
+				<td>Nota Máxima</td>
+			</tr>
+			<tr>
+				<td><input type="text" name="nota"></input></td>
+				<td><input type="text" name="notaMaxima"></input></td>
+				<td><input type="hidden" name="cadastrar" value="cadastrarTrabalho"></imput></td>
 			</tr>
 		</table>
-		<input type="submit" value="CadastrarAluno"></input
-		<a href="alunos.jsp">Cancelar</a>
+		<input type="submit" value="CadastrarTrabalho"></input
+		<a href="bem-vindo.jsp">Cancelar</a>
 	</form>
 </body>
 </html>

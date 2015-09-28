@@ -10,6 +10,7 @@
 	<form action="atualizarAction.jsp" method="post">
 		<table>
 			<tr>
+				<td>Matricula</td>
 				<td>Nome</td>
 			</tr>
 			<tr>

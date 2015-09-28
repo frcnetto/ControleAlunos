@@ -17,11 +17,11 @@ public class AlunoDao {
 	}
 	
 	public boolean cadAluno(Aluno aluno){
-		String sql = "INSERT INTO aluno(nome, media, nota) values(?, ?, ?)";
+		String sql = "INSERT INTO aluno(nome, nota, media) values(?, ?, ?)";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setString(1, aluno.getNome());
-			prepared.setInt(2, aluno.getMedia().getId());
-			prepared.setFloat(3, aluno.getNota());
+			prepared.setFloat(2, aluno.getNota());
+			prepared.setInt(3, aluno.getMedia().getId());
 			prepared.execute();
 			return true;
 		} catch (SQLException e) {
@@ -45,21 +45,17 @@ public class AlunoDao {
 		}
 	}
 	
-	public ArrayList<Aluno> cstAlunoMatricula(int matricula){
+	public Aluno cstAlunoMatricula(int matricula){
 		String sql = "SELECT * FROM aluno WHERE matricula = ?";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setLong(1, matricula);
 			ResultSet result = prepared.executeQuery();
-			if (result != null) {
-				ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-				while (result.next()) {
-					Aluno aln = new Aluno();
-					aln.setMatricula(result.getInt(1));
-					aln.setNome(result.getString(2));
-					aln.setNota(result.getInt(1));
-					alunos.add(aln);
-				}
-				return alunos;
+			if (result.next()) {
+				Aluno aln = new Aluno();
+				aln.setMatricula(result.getInt(1));
+				aln.setNome(result.getString(2));
+				aln.setNota(result.getInt(1));
+				return aln;
 			}
 			return null;
 		} catch (SQLException e) {
@@ -99,7 +95,7 @@ public class AlunoDao {
 					Aluno aln = new Aluno();
 					aln.setMatricula(result.getInt(1));
 					aln.setNome(result.getString(2));
-					aln.setNota(result.getInt(1));
+					aln.setNota(result.getInt(3));
 					alunos.add(aln);
 				}
 				return alunos;

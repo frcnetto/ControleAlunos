@@ -17,9 +17,9 @@ public class MediaDao {
 	}
 	
 	public boolean cadMedia(Media media){
-		String sql = "INSERT INTO media(formula) values(?)";
+		String sql = "INSERT INTO media(expressao) values(?)";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
-			prepared.setString(1, media.getFormula());
+			prepared.setString(1, media.getExpressao());
 			prepared.execute();
 			return true;
 		} catch (SQLException e) {
@@ -29,9 +29,9 @@ public class MediaDao {
 	}
 	
 	public boolean updMedia(Media media){
-		String sql = "UPDATE media SET formula = ? WHERE id = ?";
+		String sql = "UPDATE media SET expressao = ? WHERE id = ?";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
-			prepared.setString(1, media.getFormula());
+			prepared.setString(1, media.getExpressao());
 			prepared.setInt(2, media.getId());
 			prepared.execute();
 			return true;
@@ -51,7 +51,7 @@ public class MediaDao {
 				while(result.next()){
 					Media mda = new Media();
 					mda.setId(result.getInt(1));
-					mda.setFormula(result.getString(2));
+					mda.setExpressao(result.getString(2));
 					medias.add(mda);
 				}
 				return medias;
@@ -72,7 +72,7 @@ public class MediaDao {
 				while(result.next()){
 					Media mda = new Media();
 					mda.setId(result.getInt(1));
-					mda.setFormula(result.getString(2));
+					mda.setExpressao(result.getString(2));
 					medias.add(mda);
 				}
 				return medias;

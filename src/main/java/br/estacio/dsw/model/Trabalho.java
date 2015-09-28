@@ -3,10 +3,12 @@ package br.estacio.dsw.model;
 public class Trabalho {
 	private int	  id;
 	private float nota;
-	private Prova   prova;
+	private float notaMaxima;
+	private Aluno   aluno;
 	
 	public Trabalho(){
 		nota = 0;
+		notaMaxima = 0;
 	}
 	
 	public int getId() {
@@ -25,11 +27,19 @@ public class Trabalho {
 		this.nota = nota;
 	}
 
-	public Prova getProva() {
-		return prova;
+	public float getNotaMaxima() {
+		return notaMaxima;
 	}
 
-	public void setProva(Prova prova) {
-		this.prova = prova;
+	public void setNotaMaxima(float notaMaxima) {
+		this.notaMaxima = notaMaxima;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 }

@@ -17,10 +17,10 @@ public class TrabalhoDao {
 	}
 	
 	public boolean cadTrabalho(Trabalho trabalho){
-		String sql = "INSERT INTO trabalho(nota, trabalho) values(?, ?)";
+		String sql = "INSERT INTO trabalho(nota, prova, notaMaxima) values(?, ?, ?)";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setFloat(1, trabalho.getNota());
-			prepared.setInt(2, trabalho.getProva().getId());
+			prepared.setFloat(3, trabalho.getNotaMaxima());
 			prepared.execute();
 			return true;
 		} catch (SQLException e) {
@@ -30,10 +30,10 @@ public class TrabalhoDao {
 	}
 	
 	public boolean updTrabalho(Trabalho trabalho){
-		String sql = "UPDATE trabalho SET nota = ?, trabalho = ? WHERE id = ?";
+		String sql = "UPDATE trabalho SET nota = ?, notamaxima = ? WHERE id = ?";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setFloat(1, trabalho.getNota());
-			prepared.setInt(2, trabalho.getProva().getId());
+			prepared.setFloat(2, trabalho.getNotaMaxima());
 			prepared.setInt(3, trabalho.getId());
 			prepared.execute();
 			return true;
@@ -43,22 +43,13 @@ public class TrabalhoDao {
 		}
 	}
 	
-	public ArrayList<Trabalho> cstTrabalhoId(Trabalho trabalho){
+	public Trabalho cstTrabalhoId(Trabalho trabalho){
 		String sql = "SELECT * FROM trabalho WHERE id = ?";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setInt(1, trabalho.getId());
 			ResultSet result = prepared.executeQuery();
 			if(result != null){
-				ArrayList<Trabalho> trabalhos = new ArrayList<Trabalho>();
-				ProvaDao provaDao = new ProvaDao();
-				while(result.next()){
-					Trabalho tbl = new Trabalho();
-					tbl.setId(result.getInt(1));
-					tbl.setNota(result.getFloat(2));
-					tbl.setProva(provaDao.cstProvaId(result.getInt(3)).get(1));
-					trabalhos.add(tbl);
-				}
-				return trabalhos;
+				return (Trabalho)result.getObject(1);
 			}
 			return null;
 		} catch (SQLException e) {
@@ -78,7 +69,7 @@ public class TrabalhoDao {
 					Trabalho tbl = new Trabalho();
 					tbl.setId(result.getInt(1));
 					tbl.setNota(result.getFloat(2));
-					tbl.setProva(provaDao.cstProvaId(result.getInt(3)).get(1));
+					tbl.setNotaMaxima(result.getFloat(4));
 					trabalhos.add(tbl);
 				}
 				return trabalhos;
@@ -93,7 +84,7 @@ public class TrabalhoDao {
 	public boolean delTrabalho(Trabalho trabalho){
 		String sql = "DELETE FROM trabalho WHERE id = ?";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
-			prepared.setFloat(1, trabalho.getId());
+			prepared.setInt(1, trabalho.getId());
 			prepared.execute();
 			return true;
 		} catch (SQLException e) {
