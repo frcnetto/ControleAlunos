@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Listar provas</title>
+<title>Gerenciar provas</title>
 </head>
 <body>
 	<a href="cadastrarProva.jsp">Cadastrar</a>
@@ -30,8 +30,8 @@
 			<td name="nota"><%= prova.getNota()%></td>
 			<td name="notaMaxima"><%= prova.getPeso()%></td>
 			<td name="prova"><%= prova.getNotaFinal()%></td>
-			<td><a href="atualizarProva.jsp?cod=<%= prova.getId()%>&nota=<%= prova.getNota()%>&peso=<%= prova.getPeso()%>&notaFinal=<%= prova.getNotaFinal()%>">Editar</a></td>
-			<td><a href="excluirAction.jsp?cod=<%= prova.getId()%>&excluir=prova">Excluir</a></td>
+			<td><a href="atualizarProva.jsp?cod=<%= prova.getId()%>&nota=<%= prova.getNota()%>&peso=<%= prova.getPeso()%>&notaFinal=<%= prova.getNotaFinal()%>"><img alt="edit" src="images/edit.png"></a></td>
+			<td><a href="excluirAction.jsp?cod=<%= prova.getId()%>&excluir=prova"><img alt="delete" src="images/delete.png"></a></td>
 		</tr>
 	<%}%>
 	</table>

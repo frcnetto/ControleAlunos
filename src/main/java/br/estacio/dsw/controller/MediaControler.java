@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class Media
  */
 @WebServlet("/media.do")
-public class Media extends HttpServlet {
+public class MediaControler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-    public Media() {
+    public MediaControler() {
         super();
         // TODO Auto-generated constructor stub
     }

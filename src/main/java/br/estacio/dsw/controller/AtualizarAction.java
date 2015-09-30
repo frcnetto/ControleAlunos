@@ -1,21 +1,49 @@
-<%@page import="br.estacio.dsw.dao.AlunoDao"%>
-<%@page import="br.estacio.dsw.model.Aluno"%>
-<%@page import="br.estacio.dsw.dao.TrabalhoDao"%>
-<%@page import="br.estacio.dsw.model.Trabalho"%>
-<%@page import="br.estacio.dsw.dao.ProvaDao"%>
-<%@page import="br.estacio.dsw.model.Prova"%>
-<%@page import="br.estacio.dsw.dao.MediaDao"%>
-<%@page import="br.estacio.dsw.model.Media"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<% if(request.getParameter("atualizar").equals("atualizarAluno")){
+package br.estacio.dsw.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.estacio.dsw.dao.AlunoDao;
+import br.estacio.dsw.dao.MediaDao;
+import br.estacio.dsw.dao.ProvaDao;
+import br.estacio.dsw.dao.TrabalhoDao;
+import br.estacio.dsw.model.Aluno;
+import br.estacio.dsw.model.Media;
+import br.estacio.dsw.model.Prova;
+import br.estacio.dsw.model.Trabalho;
+
+/**
+ * Servlet implementation class atualizarAction
+ */
+@WebServlet("/AtualizarAction.do")
+public class AtualizarAction extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AtualizarAction() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getParameter("atualizar").equals("atualizarAluno")){
 			Aluno novo = new Aluno();
 			novo.setMatricula(Integer.parseInt(request.getParameter("matricula")));
 			novo.setNome(request.getParameter("nome"));
@@ -65,6 +93,7 @@
 			} else{
 				response.sendRedirect("erro.html");
 			}
-		}%>
-</body>
-</html>
+		}
+	}
+
+}

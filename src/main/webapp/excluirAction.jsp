@@ -20,7 +20,7 @@
 		aluno.setMatricula(Integer.parseInt(request.getParameter("matricula")));
 		AlunoDao dao = new AlunoDao();
 		if(dao.delAluno(aluno)){
-			response.sendRedirect("bem-vindo.jsp");
+			response.sendRedirect("alunos.jsp");
 		} else{
 			response.sendRedirect("erro.html");
 		}

@@ -17,11 +17,13 @@ public class AlunoDao {
 	}
 	
 	public boolean cadAluno(Aluno aluno){
-		String sql = "INSERT INTO aluno(nome, nota, media) values(?, ?, ?)";
+		String sql = "INSERT INTO aluno(nome, nota1, nota2, nota3, media) values(?, ?, ?, ?, ?)";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setString(1, aluno.getNome());
-			prepared.setFloat(2, aluno.getNota());
-			prepared.setInt(3, aluno.getMedia().getId());
+			prepared.setFloat(2, aluno.getNota1());
+			prepared.setFloat(3, aluno.getNota2());
+			prepared.setFloat(4, aluno.getNota3());
+			prepared.setFloat(5, aluno.getMedia());
 			prepared.execute();
 			return true;
 		} catch (SQLException e) {
@@ -31,12 +33,14 @@ public class AlunoDao {
 	}
 	
 	public boolean updAluno(Aluno aluno){
-		String sql = "UPDATE aluno SET nome = ?, media = ?, nota = ? WHERE matricula = ?";
+		String sql = "UPDATE aluno SET nome = ?, nota1 = ?, nota2 = ?, nota3 = ?, media = ? WHERE matricula = ?";
 		try (PreparedStatement prepared = conexao.prepareStatement(sql)){
 			prepared.setString(1, aluno.getNome());
-			prepared.setInt(2, aluno.getMedia().getId());
-			prepared.setFloat(3, aluno.getNota());
-			prepared.setLong(4, aluno.getMatricula());
+			prepared.setFloat(2, aluno.getNota1());
+			prepared.setFloat(3, aluno.getNota2());
+			prepared.setFloat(4, aluno.getNota3());
+			prepared.setFloat(5, aluno.getMedia());
+			prepared.setInt(6, aluno.getMatricula());
 			prepared.execute();
 			return true;
 		} catch (SQLException e) {
@@ -54,7 +58,10 @@ public class AlunoDao {
 				Aluno aln = new Aluno();
 				aln.setMatricula(result.getInt(1));
 				aln.setNome(result.getString(2));
-				aln.setNota(result.getInt(1));
+				aln.setNota1(result.getFloat(3));
+				aln.setNota2(result.getFloat(4));
+				aln.setNota3(result.getFloat(5));
+				aln.setMedia();
 				return aln;
 			}
 			return null;
@@ -74,7 +81,10 @@ public class AlunoDao {
 				Aluno aln = new Aluno();
 				aln.setMatricula(result.getInt(1));
 				aln.setNome(result.getString(2));
-				aln.setNota(result.getInt(1));
+				aln.setNota1(result.getFloat(3));
+				aln.setNota2(result.getFloat(4));
+				aln.setNota3(result.getFloat(5));
+				aln.setMedia();
 				alunos.add(aln);
 				return alunos;
 			}
@@ -95,7 +105,10 @@ public class AlunoDao {
 					Aluno aln = new Aluno();
 					aln.setMatricula(result.getInt(1));
 					aln.setNome(result.getString(2));
-					aln.setNota(result.getInt(3));
+					aln.setNota1(result.getFloat(3));
+					aln.setNota2(result.getFloat(4));
+					aln.setNota3(result.getFloat(5));
+					aln.setMedia();
 					alunos.add(aln);
 				}
 				return alunos;

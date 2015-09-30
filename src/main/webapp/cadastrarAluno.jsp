@@ -1,24 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="mdl/material.min.css">
+<link rel="stylesheet" href="mdl/material-font.css">
+<script src="mdl/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <title>Cadastrar Alunos</title>
 </head>
 <body>
-	<form action="cadastrarAction.jsp" method="post">
-		<table>
-			<th>
-				<td>Nome</td>
-			</th>
-			<tr>
-				<td><input type="text" name="nome"></input></td>
-				<td><input type="hidden" name="cadastrar" value="cadastrarAluno"></imput></td>
-			</tr>
-		</table>
-		<input type="submit" value="CadastrarAluno"></input
-		<a href="alunos.jsp">Cancelar</a>
+	<form action="cadastratAction.jsp" method="post">
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<input class="mdl-textfield__input" type="text" name="nome"></input>
+			<label class="mdl-textfield__label" for="nome">Nome...</label>
+		</div><br>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<input class="mdl-textfield__input" type="text" name="nota1"></input>
+			<label class="mdl-textfield__label" for="nome">Primeira Nota...</label>
+		</div><br>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<input class="mdl-textfield__input" type="text" name="nota2"></input>
+			<label class="mdl-textfield__label" for="nome">Segunda Nota...</label>
+		</div><br>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<input class="mdl-textfield__input" type="text" name="nota3"></input>
+			<label class="mdl-textfield__label" for="nome">Terceira Nota...</label>
+		</div><br>
+		<input type="hidden" name="cadastrar" value="cadastrarAluno"></imput>
+		<input class="mdl-button mdl-js-button" type="submit" value="Cadastrar Aluno"></input><br>
+		<a class="mdl-button mdl-js-button" href="alunos.jsp">Cancelar</a>
 	</form>
 </body>
 </html>

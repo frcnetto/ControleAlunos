@@ -23,10 +23,11 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
-		</dependency>
+			<scope>provided</scope>
+		</dependency> 
 	</dependencies>
 	<build>
-		<finalName>fabricaweb</finalName>
+		<finalName>controlealunos</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

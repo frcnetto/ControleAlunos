@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Listar medias</title>
+<title>Gerenciar medias</title>
 </head>
 <body>
 	<a href="cadastrarMedia.jsp">Cadastrar</a>
@@ -26,8 +26,8 @@
 		<tr>
 			<td name="cod"><%= media.getId()%></td>
 			<td name="expressao"><%= media.getExpressao()%></td>
-			<td><a href="atualizarMedia.jsp?cod=<%= media.getId()%>&expressao=<%= media.getExpressao()%>">Editar</a></td>
-			<td><a href="excluirAction.jsp?cod=<%= media.getId()%>&excluir=media">Excluir</a></td>
+			<td><a href="atualizarMedia.jsp?cod=<%= media.getId()%>&expressao=<%= media.getExpressao()%>"><img alt="edit" src="images/edit.png"></a></td>
+			<td><a href="excluirAction.jsp?cod=<%= media.getId()%>&excluir=media"><img alt="delete" src="images/delete.png"></a></td>
 		</tr>
 	<%}%>
 	</table>

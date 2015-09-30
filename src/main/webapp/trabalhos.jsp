@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Listar trabalhos</title>
+<title>Gerenciar trabalhos</title>
 </head>
 <body>
 	<a href="cadastrarTrabalho.jsp">Cadastrar</a>
@@ -29,9 +29,8 @@
 			<td name="cod"><%= trabalho.getId()%></td> 
 			<td name="nota"><%= trabalho.getNota()%></td>
 			<td name="notaMaxima"><%= trabalho.getNotaMaxima()%></td>
-			<td name="prova"><%= trabalho.getProva()%></td>
-			<td><a href="atualizarTrabalho.jsp?cod=<%= trabalho.getId()%>&nota=<%= trabalho.getNota()%>&notaMaxima=<%= trabalho.getNotaMaxima()%>">Editar</a></td>
-			<td><a href="excluirAction.jsp?cod=<%= trabalho.getId()%>&excluir=trabalho">Excluir</a></td>
+			<td><a href="atualizarTrabalho.jsp?cod=<%= trabalho.getId()%>&nota=<%= trabalho.getNota()%>&notaMaxima=<%= trabalho.getNotaMaxima()%>"><img alt="edit" src="images/edit.png"></a></td>
+			<td><a href="excluirAction.jsp?cod=<%= trabalho.getId()%>&excluir=trabalho"><img alt="delete" src="images/delete.png"></a></td>
 		</tr>
 	<%}%>
 	</table>
