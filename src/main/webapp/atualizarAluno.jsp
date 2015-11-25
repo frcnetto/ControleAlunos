@@ -11,6 +11,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%if(request.getMethod().equalsIgnoreCase("get")){
+		response.sendRedirect("erro2.html");
+	}  %>
 	<form action="atualizarAction.jsp" method="post">
 		<input type="hidden" name="matricula" value="<%= request.getParameter("matricula")%>"></input>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

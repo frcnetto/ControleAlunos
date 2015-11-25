@@ -11,7 +11,7 @@
 <title>Cadastrar Alunos</title>
 </head>
 <body>
-	<form action="cadastratAction.jsp" method="post">
+	<form action="cadastrarAction.jsp" method="post">
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="text" name="nome"></input>
 			<label class="mdl-textfield__label" for="nome">Nome...</label>

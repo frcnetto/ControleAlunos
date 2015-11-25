@@ -15,42 +15,47 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% if(request.getParameter("excluir").equals("aluno")){
-		Aluno aluno = new Aluno();
-		aluno.setMatricula(Integer.parseInt(request.getParameter("matricula")));
-		AlunoDao dao = new AlunoDao();
-		if(dao.delAluno(aluno)){
-			response.sendRedirect("alunos.jsp");
-		} else{
-			response.sendRedirect("erro.html");
+	<% 
+	if(request.getMethod().equalsIgnoreCase("post")){
+		if(request.getParameter("excluir").equals("aluno")){
+			Aluno aluno = new Aluno();
+			aluno.setMatricula(Integer.parseInt(request.getParameter("matricula")));
+			AlunoDao dao = new AlunoDao();
+			if(dao.delAluno(aluno)){
+				response.sendRedirect("alunos.jsp");
+			} else{
+				response.sendRedirect("erro.html");
+			}
+		} if(request.getParameter("excluir").equals("trabalho")){
+			Trabalho trabalho = new Trabalho();
+			trabalho.setId(Integer.parseInt(request.getParameter("cod")));
+			TrabalhoDao dao = new TrabalhoDao();
+			if(dao.delTrabalho(trabalho)){
+				response.sendRedirect("trabalhos.jsp");
+			} else{
+				response.sendRedirect("erro.html");
+			}
+		} if(request.getParameter("excluir").equals("prova")){
+			Prova prova = new Prova();
+			prova.setId(Integer.parseInt(request.getParameter("cod")));
+			ProvaDao dao = new ProvaDao();
+			if(dao.delProva(prova)){
+				response.sendRedirect("provas.jsp");
+			} else{
+				response.sendRedirect("erro.html");
+			}
+		} if(request.getParameter("excluir").equals("media")){
+			Media media = new Media();
+			media.setId(Integer.parseInt(request.getParameter("cod")));
+			MediaDao dao = new MediaDao();
+			if(dao.delMedia(media)){
+				response.sendRedirect("medias.jsp");
+			} else{
+				response.sendRedirect("erro.html");
+			}
 		}
-	} if(request.getParameter("excluir").equals("trabalho")){
-		Trabalho trabalho = new Trabalho();
-		trabalho.setId(Integer.parseInt(request.getParameter("cod")));
-		TrabalhoDao dao = new TrabalhoDao();
-		if(dao.delTrabalho(trabalho)){
-			response.sendRedirect("trabalhos.jsp");
-		} else{
-			response.sendRedirect("erro.html");
-		}
-	} if(request.getParameter("excluir").equals("prova")){
-		Prova prova = new Prova();
-		prova.setId(Integer.parseInt(request.getParameter("cod")));
-		ProvaDao dao = new ProvaDao();
-		if(dao.delProva(prova)){
-			response.sendRedirect("provas.jsp");
-		} else{
-			response.sendRedirect("erro.html");
-		}
-	} if(request.getParameter("excluir").equals("media")){
-		Media media = new Media();
-		media.setId(Integer.parseInt(request.getParameter("cod")));
-		MediaDao dao = new MediaDao();
-		if(dao.delMedia(media)){
-			response.sendRedirect("medias.jsp");
-		} else{
-			response.sendRedirect("erro.html");
-		}
-	}%>
+	} else{
+			response.sendRedirect("erro2.html");
+		}%>
 </body>
 </html>

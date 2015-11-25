@@ -52,13 +52,34 @@
 				<td name="nota2"><%= aluno.getNota2()%></td>
 				<td name="nota3"><%= aluno.getNota3()%></td>
 				<td name="media"><%= aluno.getMedia()%></td>
+				<!-- 
+					<td>
+						<a href="atualizarAluno.jsp?matricula=<%= aluno.getMatricula()%>&nome=<%= aluno.getNome()%>&nota1=<%= aluno.getNota1()%>&nota2=<%= aluno.getNota2()%>&nota3=<%= aluno.getNota3()%>">
+							<img alt="edit" src="images/edit.png"> </a>
+					</td>
+				 -->
 				<td>
-					<a href="atualizarAluno.jsp?matricula=<%= aluno.getMatricula()%>&nome=<%= aluno.getNome()%>&nota1=<%= aluno.getNota1()%>&nota2=<%= aluno.getNota2()%>&nota3=<%= aluno.getNota3()%>">
-						<img alt="edit" src="images/edit.png"> </a>
+					<form action="atualizarAluno.jsp" method="post">
+						<input type="hidden" name="matricula" value="<%= aluno.getMatricula()%>"></imput>
+						<input type="hidden" name="nome" value="<%= aluno.getNome()%>"></imput>
+						<input type="hidden" name="nota1" value="<%= aluno.getNota1()%>"></imput>
+						<input type="hidden" name="nota2" value="<%= aluno.getNota2()%>"></imput>
+						<input type="hidden" name="nota3" value="<%= aluno.getNota3()%>"></imput>
+						<input class="mdl-button mdl-js-button" type="submit" value="Editar"></input><br>
+					</form>
 				</td>
+				<!-- 
+					<td>
+						<a href="excluirAction.jsp?matricula=<%= aluno.getMatricula()%>&excluir=aluno">
+							<img alt="delete" src="images/delete.png"></a>
+					</td>
+				 -->
 				<td>
-					<a href="excluirAction.jsp?matricula=<%= aluno.getMatricula()%>&excluir=aluno">
-						<img alt="delete" src="images/delete.png"></a>
+					<form action="excluirAction.jsp" method="post">
+						<input type="hidden" name="excluir" value="aluno"></imput>
+						<input type="hidden" name="matricula" value="<%= aluno.getMatricula()%>"></imput>
+						<input class="mdl-button mdl-js-button" type="submit" value="Excluir"></input><br>
+					</form>
 				</td>
 			</tr>
 		<%}%>
